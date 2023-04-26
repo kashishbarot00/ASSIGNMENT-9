@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="97154"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-04-26 04:45:14 AM"/>
+        <attribute name="created" value="OTcxNTQ7TEFQVE9QLUFDTDZMMlQ3OzIwMjMtMDQtMjY7MDQ6MzU6MzQgQU07MjU2OQ=="/>
+        <attribute name="edited" value="OTcxNTQ7TEFQVE9QLUFDTDZMMlQ3OzIwMjMtMDQtMjY7MDQ6Mzg6MjAgQU07MTs5NzE1NDtMQVBUT1AtQUNMNkwyVDc7MjAyMy0wNC0yNjswMzo0NzozMCBBTTs1MzAx"/>
+        <attribute name="edited" value="OTcxNTQ7TEFQVE9QLUFDTDZMMlQ3OzIwMjMtMDQtMjY7MDQ6NDU6MTQgQU07MTsyNjc2"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="qty" type="Real" array="False" size=""/>
+            <declare name="price" type="Real" array="False" size=""/>
+            <declare name="total" type="Real" array="False" size=""/>
+            <input variable="qty"/>
+            <input variable="price"/>
+            <call expression="comptotal(qty, price)"/>
+            <assign variable="total" expression="comptotal(qty, price)"/>
+            <output expression="total" newline="True"/>
+        </body>
+    </function>
+    <function name="comptotal" type="Real" variable="total">
+        <parameters>
+            <parameter name="qty" type="Real" array="False"/>
+            <parameter name="price" type="Real" array="False"/>
+        </parameters>
+        <body>
+            <declare name="total" type="Real" array="False" size=""/>
+            <assign variable="total" expression="qty * price"/>
+            <if expression="total &gt; 10000.00">
+                <then>
+                    <assign variable="total" expression="total * 0.90"/>
+                </then>
+                <else>
+                    <assign variable="total" expression="total"/>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

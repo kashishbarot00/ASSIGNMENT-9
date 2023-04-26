@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="3.0">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="97154"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2023-04-26 06:38:22 AM"/>
+        <attribute name="created" value="OTcxNTQ7TEFQVE9QLUFDTDZMMlQ3OzIwMjMtMDQtMjY7MDY6MjA6NTIgQU07MjU2NQ=="/>
+        <attribute name="edited" value="OTcxNTQ7TEFQVE9QLUFDTDZMMlQ3OzIwMjMtMDQtMjY7MDY6Mzg6MjIgQU07MTsyNjc5"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="lname" type="String" array="False" size=""/>
+            <declare name="name" type="String" array="False" size=""/>
+            <declare name="tuition" type="Real" array="False" size=""/>
+            <declare name="tuitionowed" type="Real" array="False" size=""/>
+            <declare name="credithrs" type="Real" array="False" size=""/>
+            <declare name="districtcode" type="String" array="False" size=""/>
+            <declare name="indistrictrate" type="Real" array="False" size=""/>
+            <declare name="outofdistrict" type="Real" array="False" size=""/>
+            <input variable="name"/>
+            <input variable="lname"/>
+            <input variable="credithrs"/>
+            <input variable="districtcode"/>
+            <assign variable="tuitionowed" expression="comptuition(credithrs, districtcode)"/>
+            <output expression="&quot;Student's Name: &quot; &amp;name" newline="True"/>
+            <output expression="&quot;Tuition owed: &quot; &amp;tuitionowed" newline="True"/>
+        </body>
+    </function>
+    <function name="comptuition" type="Real" variable="tuitionowed">
+        <parameters>
+            <parameter name="credithrs" type="Real" array="False"/>
+            <parameter name="districtcode" type="String" array="False"/>
+        </parameters>
+        <body>
+            <declare name="tuitionowed" type="Real" array="False" size=""/>
+            <declare name="indistrictrate" type="Real" array="False" size=""/>
+            <declare name="outofdistrict" type="Real" array="False" size=""/>
+            <assign variable="indistrictrate" expression="250"/>
+            <assign variable="outofdistrict" expression="550"/>
+            <if expression="districtcode = &quot;I&quot;">
+                <then>
+                    <assign variable="tuitionowed" expression="credithrs*indistrictrate"/>
+                </then>
+                <else>
+                    <if expression="districtcode == &quot;O&quot;">
+                        <then>
+                            <assign variable="tuitionowed" expression="credithrs * outofdistrict"/>
+                        </then>
+                        <else>
+                            <assign variable="tuitionowed" expression="0"/>
+                        </else>
+                    </if>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>
